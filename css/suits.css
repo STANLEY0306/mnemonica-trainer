@@ -1,0 +1,5 @@
+.playing-card.suit-c{background:linear-gradient(145deg,#e4eddb,#c8d7b6)}
+.playing-card.suit-h{background:linear-gradient(145deg,#f1ddd7,#e5c0b8)}
+.playing-card.suit-s{background:linear-gradient(145deg,#dce7e6,#b9cbcb)}
+.playing-card.suit-d{background:linear-gradient(145deg,#eee4c8,#dccc9e)}
+.floating-quick{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:7;box-shadow:var(--shadow-glow)}

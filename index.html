@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="velvet">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17211e"><meta name="description" content="以牌序總覽、記憶技巧與間隔練習，逐步熟悉 Mnemonica 牌序。">
+  <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/tokens.css"><link rel="stylesheet" href="./css/themes.css"><link rel="stylesheet" href="./css/base.css"><link rel="stylesheet" href="./css/components.css"><link rel="stylesheet" href="./css/suits.css">
+  <title>Mnemonica｜牌序記憶練習室</title>
+</head>
+<body>
+  <a class="skip" href="#main">跳至主要內容</a>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="Mnemonica 記憶練習室首頁"><span class="brand-mark" aria-hidden="true">M</span><span><span class="brand-name">MNEMONICA</span><br><small class="muted">牌序記憶練習室</small></span></a>
+      <div class="top-actions"><button class="button small" id="quick-open" aria-keyshortcuts="/">快速查詢 <kbd>/</kbd></button><button class="icon-button" id="theme-cycle" title="切換主題" aria-label="切換主題">☼</button></div>
+    </header>
+    <nav class="nav" aria-label="主要導覽" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-tab="overview">牌序總覽</button><button class="tab" role="tab" aria-selected="false" data-tab="learn">學習方法</button><button class="tab" role="tab" aria-selected="false" data-tab="practice">練習遊戲</button><button class="tab" role="tab" aria-selected="false" data-tab="stats">學習統計</button><button class="tab" role="tab" aria-selected="false" data-tab="about">關於與來源</button>
+    </nav>
+    <main id="main">
+      <section class="hero"><div><div class="eyebrow">A MEMORIZED DECK, ONE CARD AT A TIME</div><h1>把牌序，練成直覺。</h1><p>從一張牌、一個位置開始。每次回想，都讓牌序更清晰。</p></div><div class="ornament" aria-hidden="true">♠　♦　♣　♥</div></section>
+      <section class="section active" id="section-overview" role="tabpanel">
+        <div class="overview-layout">
+        <div class="panel"><div class="panel-head"><div><h2>牌序總覽</h2><span class="muted">位置 1–52 · 以 52 張為循環</span></div><div class="toolbar"><label class="sr-only" for="search">搜尋位置或牌</label><input class="field" id="search" type="search" placeholder="位置、6S、黑桃6…" autocomplete="off"><button class="button" id="search-go">查詢</button></div></div>
+          <div class="panel-head"><div class="segmented" role="group" aria-label="牌面顯示方式"><button class="active" data-view="all">全部</button><button data-view="position">只看位置</button><button data-view="face">只看牌面</button><button data-view="suit">依花色上色</button></div><div class="toolbar"><label class="muted" for="heatmap">熟練度</label><select id="heatmap" class="field"><option value="off">關閉</option><option value="heat">顯示熱力圖</option></select></div></div>
+          <div class="grid-scroll" tabindex="0" aria-label="52 張牌的牌序表，可左右捲動"><div class="deck-grid" id="deck-grid" aria-label="每行 13 張，共四行"></div></div><small class="muted">手機可左右捲動查看完整 13 欄；第 52 張的下一張會回到第 1 張。</small>
+        </div>
+        <aside class="panel detail empty" id="detail" aria-live="polite"><div><div class="eyebrow">CARD NOTES</div><h2>選一張牌，開始探索</h2><p>查看相鄰牌、記下自己的助記畫面，並從資料計算牌序線索。</p><p class="muted">也可按 <kbd>/</kbd> 隨時快速查詢。</p></div></aside>
+        </div>
+      </section>
+      <section class="section" id="section-learn" role="tabpanel"><div class="panel"><div class="panel-head"><div><h2>循序學習</h2><span class="muted">看 → 遮住 → 回想 → 核對</span></div><label class="toolbar">每段牌數 <select id="chunk-size" class="field"><option>4</option><option>5</option><option>7</option></select></label></div><div id="study-chunks" class="cards-row"></div><div class="footnote"><h2>記憶方法工具箱</h2><div class="cards-row" id="techniques"></div></div><div class="footnote"><h2>我的記憶宮殿</h2><p>建立 13 個熟悉地點，每個地點可對應 4 張牌。地點名稱只保存在這部裝置。</p><div id="palace-list" class="cards-row"></div></div><div class="footnote"><h2>位置錨點</h2><p>選擇熟悉的位置，再練習沿著 52 張循環向前或向後推算。</p><div id="anchor-list" class="toolbar"></div></div></div></section>
+      <section class="section" id="section-practice" role="tabpanel"><div class="panel"><div class="panel-head"><div><h2>練習桌</h2><span class="muted">答題後即時回饋，錯題會列入複習</span></div><div class="toolbar"><label class="tag"><input type="checkbox" id="sound-setting"> 音效</label><label class="muted" for="lightning-setting">閃電限時</label><select id="lightning-setting" class="field"><option value="1">1 秒</option><option value="2">2 秒</option><option value="3">3 秒</option><option value="5">5 秒</option></select></div></div><div class="cards-row" id="game-menu"></div><div id="game-area" class="study-stage hidden"></div></div></section>
+      <section class="section" id="section-stats" role="tabpanel"><div class="panel"><div class="panel-head"><div><h2>學習紀錄</h2><span class="muted">資料儲存在此裝置的瀏覽器</span></div><div class="toolbar"><button class="button" id="export-data">匯出 JSON</button><label class="button" for="import-file">匯入 JSON</label><input class="hidden" type="file" id="import-file" accept="application/json,.json"><button class="button danger" id="reset-data">重設資料</button></div></div><div class="stats-grid" id="stats-grid"></div><div class="footnote"><h2>熟練度分布</h2><div class="bar-list" id="box-chart"></div></div><div class="footnote"><h2>每日練習量（近 7 日）</h2><div class="bar-list" id="daily-chart"></div></div><div class="footnote"><h2>最常錯的牌</h2><div class="cards-row" id="miss-list"></div></div></div></section>
+      <section class="section" id="section-about" role="tabpanel"><div class="panel"><h2>關於 Mnemonica</h2><p>Mnemonica 是由魔術師 Juan Tamariz 推廣的記憶牌序，常用於記憶牌魔術。相關出版資料將西班牙文版《Sinfonía en Mnemónica Mayor》列為 Editorial Frakson 於 1988 年出版；部分英文版本則晚於此。任務文字提到的 1983 年未找到可靠資料支持，因此本站不將它列為確定出版年份。</p><p>此網站使用你指定的 52 張牌序作為唯一資料來源。相鄰牌、同點數位置與循環距離均由程式計算，不預設牌序中存在未驗證的規律。內建圖像是可編輯的「建議助記」，不是 Tamariz 的官方口訣。</p><h2>資料與方法來源</h2><ul class="source-list"><li>Juan Tamariz, <i>Sinfonía en Mnemónica Mayor</i>（書目資料列出 Editorial Frakson, Madrid, 1988）：<a href="https://www.abebooks.com/book-search/author/JUAN-TAMARIZ/" target="_blank" rel="noreferrer">AbeBooks 書目搜尋</a>；亦可參考魔術書目拍賣目錄 <a href="https://potterauctions.com/pdf/016_Charles_Reynolds_Catalog_WEB.pdf" target="_blank" rel="noreferrer">Potter & Potter 書目目錄</a>。</li><li>方法定位法的心理學研究綜述與統合分析：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12514325/" target="_blank" rel="noreferrer">The method of loci in the context of psychological research</a>。</li><li>間隔練習與提取練習的研究綜述：<a href="https://doi.org/10.1038/s44159-022-00089-1" target="_blank" rel="noreferrer">The science of effective learning with spacing and retrieval practice</a>。</li><li>Major System 與記憶宮殿的實務研究說明：<a href="https://www.cia.gov/resources/csi/static/Memory-Techniques-For-Intelligence-March-2025.pdf" target="_blank" rel="noreferrer">Memory Techniques in Intelligence</a>。</li><li>記憶專家使用助記策略的回顧：<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3939671/" target="_blank" rel="noreferrer">Augmented memory: a survey of the approaches to remembering more</a>。</li></ul><p class="muted">PAO 與故事鏈在本站作為一般助記建議，使用者可自行修改；本站不聲稱這些是 Tamariz 對應此牌序的官方教法。</p></div></section>
+    </main>
+    <footer class="footnote">離線使用需先在線上開啟一次並啟用 Service Worker。牌面以文字與花色符號共同標示，不依賴顏色辨認。</footer>
+  </div>
+  <div class="modal-backdrop hidden" id="quick-modal" role="dialog" aria-modal="true" aria-labelledby="quick-title"><div class="modal"><div class="modal-head"><h2 id="quick-title">快速查詢</h2><button class="icon-button" id="quick-close" aria-label="關閉">×</button></div><p class="muted">輸入位置（1–52）、牌面（6S）或花色名稱（黑桃6）。</p><form id="quick-form"><input id="quick-input" class="field" style="width:100%" autocomplete="off" placeholder="例如：15 或 黑桃6"><div class="toolbar" style="justify-content:flex-end;margin-top:1rem"><button class="button" type="button" id="quick-cancel">取消</button><button class="button primary">查詢</button></div></form><div id="quick-result" aria-live="polite"></div></div></div>
+  <button class="button primary floating-quick" id="quick-floating" aria-label="開啟快速查牌">即時查牌　↗</button>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script type="module" src="./js/main.js"></script>
+</body></html>

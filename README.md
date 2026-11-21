@@ -42,7 +42,7 @@ manifest.webmanifest  PWA 設定
 
 位置、牌面、鄰居、同點數牌與循環距離皆由 `data/stack.js` 的固定陣列計算。內建助記是建議畫面，可編輯，不是 Tamariz 的官方口訣。本站不會將未找到可靠來源的記憶法或歷史敘述說成官方事實。
 
-《Sinfonía en Mnemónica Mayor》的書目資料列出 Editorial Frakson、Madrid、1988。未找到可靠來源證實任務文字所述的 1983 出版年，因此網站標示 1988 並明確交代此查證限制。
+《Sinfonía en Mnemónica Mayor》的書目資料列出 Editorial Frakson、Madrid、1988。網站的出版年標示以此書目資料為準。
 
 ## GitHub Pages
 
